@@ -1,8 +1,8 @@
 var exec = require('cordova/exec');
 
 var NativeWebCommunicationPlugin = {
-    sendMessageToNative: function(message, successCallback, errorCallback) {
-        exec(successCallback, errorCallback, 'NativeWebCommunicationPlugin', 'sendMessageToNative', [message]);
+    enviarDatosAlWeb: function(successCallback, errorCallback, datos) {
+        exec(successCallback, errorCallback, 'NativeWebCommunicationPlugin', 'enviarDatosAlWeb', [datos]);
     }
 };
 

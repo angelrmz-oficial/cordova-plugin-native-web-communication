@@ -2,16 +2,20 @@ package org.apache.cordova.nativeweb;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 public class NativeWebCommunicationPlugin extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if ("sendMessageToNative".equals(action)) {
-            String message = args.getString(0);
-            // Realiza acciones en la parte nativa con el mensaje recibido
-            callbackContext.success("Message received by native");
+        if ("enviarDatosAlWeb".equals(action)) {
+            String datosAEnviar = args.getString(0);
+
+            // Crea un PluginResult y envíalo al lado JavaScript
+            PluginResult result = new PluginResult(PluginResult.Status.OK, datosAEnviar);
+            callbackContext.sendPluginResult(result);
+
             return true;
         }
         return false;
